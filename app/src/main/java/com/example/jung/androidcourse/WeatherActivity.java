@@ -3,36 +3,39 @@ package com.example.jung.androidcourse;
 /**
  * Created by jung on 2018/11/28.
  */
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.graphics.Color;
-import android.os.Build;
-import android.os.Bundle;
-import android.preference.PreferenceManager;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.AppCompatActivity;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ScrollView;
-import android.widget.TextView;
-import android.widget.Toast;
-import com.bumptech.glide.Glide;
-import com.example.jung.androidcourse.gson.Forecast;
-import com.example.jung.androidcourse.gson.Weather;
-import com.example.jung.androidcourse.service.AutoUpdateService;
-import com.example.jung.androidcourse.util.HttpUtil;
-import com.example.jung.androidcourse.util.Utility;
 
-import java.io.IOException;
+        import android.content.Intent;
+        import android.content.SharedPreferences;
+        import android.graphics.Color;
+        import android.os.Build;
+        import android.os.Bundle;
+        import android.preference.PreferenceManager;
+        import android.support.v4.view.GravityCompat;
+        import android.support.v4.widget.DrawerLayout;
+        import android.support.v4.widget.SwipeRefreshLayout;
+        import android.support.v7.app.AppCompatActivity;
+        import android.view.LayoutInflater;
+        import android.view.View;
+        import android.widget.Button;
+        import android.widget.ImageView;
+        import android.widget.LinearLayout;
+        import android.widget.ScrollView;
+        import android.widget.TextView;
+        import android.widget.Toast;
 
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.Response;
+        import com.bumptech.glide.Glide;
+        import com.example.jung.androidcourse.gson.Forecast;
+        import com.example.jung.androidcourse.gson.Weather;
+        import com.example.jung.androidcourse.service.AutoUpdateService;
+        import com.example.jung.androidcourse.util.HttpUtil;
+        import com.example.jung.androidcourse.util.Utility;
+
+
+        import java.io.IOException;
+
+        import okhttp3.Call;
+        import okhttp3.Callback;
+        import okhttp3.Response;
 
 public class WeatherActivity extends AppCompatActivity {
 
@@ -71,8 +74,7 @@ public class WeatherActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         if (Build.VERSION.SDK_INT >= 21) {
             View decorView = getWindow().getDecorView();
-            decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                    | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+            decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
             getWindow().setStatusBarColor(Color.TRANSPARENT);
         }
         setContentView(R.layout.activity_weather);
@@ -131,7 +133,8 @@ public class WeatherActivity extends AppCompatActivity {
      * 根据天气id请求城市天气信息。
      */
     public void requestWeather(final String weatherId) {
-        String weatherUrl = "https://api.heweather.com/x3/weather?cityid=" + weatherId + "&key=bc0418b57b2d4918819d3974ac1285d9";
+        String weatherUrl = "http://guolin.tech/api/weather?cityid=" + weatherId + "&key=9922f848c83d44d9a4d2af3872418c9a";
+        System.out.println(weatherId);
         HttpUtil.sendOkHttpRequest(weatherUrl, new Callback() {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
